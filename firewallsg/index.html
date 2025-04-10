@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palo Alto to Prisma Access Converter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px; /* Add space between left and right panels */
+        }
+        .left-panel, .right-panel {
+            width: 48%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .panel-title {
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="left-panel">
+            <div class="panel-title">Upload Firewall CSV Files</div>
+            <form method="POST" enctype="multipart/form-data">
+                <!-- Address Form -->
+                <div class="form-group">
+                    <label for="address_file" class="form-label">Address</label>
+                    <input type="file" class="form-control" id="address_file" name="address_file" required>
+                </div>
+                <!-- Address Group Form -->
+                <div class="form-group">
+                    <label for="address_group_file" class="form-label">Address Group</label>
+                    <input type="file" class="form-control" id="address_group_file" name="address_group_file" required>
+                </div>
+                <!-- Service Form -->
+                <div class="form-group">
+                    <label for="service_file" class="form-label">Service</label>
+                    <input type="file" class="form-control" id="service_file" name="service_file" required>
+                </div>
+                <!-- Service Group Form -->
+                <div class="form-group">
+                    <label for="service_group_file" class="form-label">Service Group</label>
+                    <input type="file" class="form-control" id="service_group_file" name="service_group_file" required>
+                </div>
+                <!-- Security Rule Form -->
+                <div class="form-group">
+                    <label for="security_rule_file" class="form-label">Security Rule</label>
+                    <input type="file" class="form-control" id="security_rule_file" name="security_rule_file" required>
+                </div>
+                <!-- Security Profiles Form -->
+                <!-- Add all other security profiles here -->
+                <div class="form-group">
+                    <label for="antivirus_file" class="form-label">Antivirus</label>
+                    <input type="file" class="form-control" id="antivirus_file" name="antivirus_file" required>
+                </div>
+                <!-- More security profile inputs -->
+            </form>
+        </div>
+
+        <div class="right-panel">
+            <div class="panel-title">Token Generation Inputs</div>
+            <form method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="client_id" class="form-label">Client ID</label>
+                    <input type="text" class="form-control" id="client_id" name="client_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="client_secret" class="form-label">Client Secret</label>
+                    <input type="text" class="form-control" id="client_secret" name="client_secret" required>
+                </div>
+                <div class="form-group">
+                    <label for="folder" class="form-label">Prisma Access Folder</label>
+                    <select class="form-select" id="folder" name="folder" required>
+                        <option value="Shared">Shared</option>
+                        <option value="Mobile Users">Mobile Users</option>
+                        <option value="Remote Networks">Remote Networks</option>
+                        <option value="Service Connection">Service Connection</option>
+                        <option value="Mobile Users Container">Mobile Users Container</option>
+                        <option value="Mobile Users Explicit Proxy">Mobile Users Explicit Proxy</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rule_position" class="form-label">Rule Position (Pre/Post)</label>
+                    <select class="form-select" id="rule_position" name="rule_position" required>
+                        <option value="pre">Pre Rules</option>
+                        <option value="post">Post Rules</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Convert and Push Rules</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
